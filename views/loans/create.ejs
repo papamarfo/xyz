@@ -1,0 +1,42 @@
+<%- include('../layouts/header', {title:'Loans'}); -%>
+
+<div class="container">
+    <%- include('../partials/navbar') %>
+
+    <%- include('../partials/notifications') %>
+
+    <h1>Add New Loan</h1>
+
+    <div class="mt-20"></div>
+
+    <form action="/loans" method="POST">
+        <div class="form-example">
+            <label>Customer: </label>
+            <input type="text" value="<%= customer.name %>" disabled required>
+            <input type="hidden" name="customer_id" value="<%= customer.id %>">
+        </div>
+        <br/>
+        <div>
+            <label>Amount: </label>
+            <input type="number" name="amount" required>
+        </div>
+        <br/>
+        <div>
+            <label>Rate: </label>
+            <input type="number" name="rate" required>
+        </div>
+        <br/>
+        <div>
+            <label>Time: </label>
+            <input type="number" name="time" required>
+        </div>
+
+        <br/><br/>
+
+        <div>
+            <input type="submit" value="Add Customer">
+        </div>
+    </form>
+</div>
+
+<%- include('../layouts/footer'); -%>

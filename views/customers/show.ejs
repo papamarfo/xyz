@@ -1,0 +1,67 @@
+<%- include('../layouts/header', {title:'Customers'}); -%>
+
+<div class="container">
+    <%- include('../partials/navbar') %>
+
+    <h1 class="mt-20">Customer Details</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Marital Status</th>
+            <th>DOB</th>
+            <th>ID Card</th>
+            <th>Employment Status</th>
+            <th>Employer Name</th>
+        </tr>
+        <tr>
+            <td><%= customer.name %></td>
+            <td><%= customer.email %></td>
+            <td><%= customer.address %></td>
+            <td><%= customer.phone %></td>
+            <td><%= customer.marital_status %></td>
+            <td><%= customer.dob %></td>
+            <td><%= customer.id_card_type %>: <%= customer.id_card_number %></td>
+            <td><%= customer.employment_status %></td>
+            <td><%= customer.employer_name %></td>
+        </tr>
+    </table>
+
+
+    <h1 class="mt-20">Loans</h1>
+
+    <%- include('../partials/notifications') %>
+
+    <div class="mt-20"></div>
+
+    <% if (loans.length != 0) { %>
+        <a href="/customers/<%= customer.id %>/loans/new">Add Loan</a>
+    <% } %>
+
+    <% if(loans.length != 0){ %>
+        <table class="mt-20">
+            <tr>
+                <th>Amount (GHS)</th>
+                <th>Rate (%)</th>
+                <th>Time (Years)</th>
+                <th>Interest</th>
+                <th>Date</th>
+            </tr>
+            <% loans.forEach((loan)=> { %>
+                <tr>
+                    <td><%= loan.amount %></td>
+                    <td><%= loan.rate %></td>
+                    <td><%= loan.time %></td>
+                    <td><%= loan.interest %></td>
+                    <td><%= loan.createdAt %></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } else{ %>
+        <p>No loans. <a href="/customers/<%= customer.id %>/loans/new">Add Loan</a></p>
+    <% } %>
+</div>
+
+<%- include('../layouts/footer'); -%>

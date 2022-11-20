@@ -1,0 +1,23 @@
+<%- include('layouts/header', {title:'Login'}); -%>
+
+<div class="container">
+    <h1>Login</h1>
+
+    <%- include('partials/notifications') %>
+    
+    <form action="/login" method="POST">
+        <label for="email">Email</label><br/>
+        <input type="email" name="email" id="email" autocomplete="off" placeholder="Enter your email">
+        
+        <br/><br/>
+
+        <label for="password">Password</label><br/>
+        <input type="password" name="password" id="password" placeholder="Enter new password"><br/>
+
+        <br/>
+
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<%- include('layouts/footer'); -%>
